@@ -25,6 +25,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
   styleUrls: ['./formulario.component.css'],
+  standalone: true,
   imports: [
     NgIf,
     NgFor,
