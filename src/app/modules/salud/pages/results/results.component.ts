@@ -30,8 +30,7 @@ import { ServicioDeCompararService } from "../../../../services/servicio-de-comp
 import { FormBuilder, FormGroup, FormControl } from "@angular/forms";
 import * as clinicas from "../../../../data/constants/mock/clinicas.json";
 import { HttpClient } from "@angular/common/http";
-import { SERVER_URL } from "../../../../constants";
-import { ItemsService } from '../../../../shared/item/items.service';
+import { environment } from 'src/environments/environment';import { ItemsService } from '../../../../shared/item/items.service';
 import { SelectItem } from "primeng/api"; // Import SelectItem from PrimeNG
 import { Empresa } from "../../../../data/interfaces/empresas";
 import { MultiSelectModule } from 'primeng/multiselect';
@@ -169,7 +168,7 @@ export class ResultsComponent implements OnInit, OnChanges, OnDestroy  {
   loading$: Observable<boolean>;
   public show: boolean = false;
   public buttonName: any = "Show";
-  serverUrl = SERVER_URL;
+  serverUrl = environment.apiUrl;
   bodyText: string;
   title = "product-app";
   public secureProducts: any = (planes as any).default;

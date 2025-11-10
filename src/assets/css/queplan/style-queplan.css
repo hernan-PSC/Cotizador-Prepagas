@@ -20,7 +20,8 @@
      padding:0;
      line-height:2.571em;
      background-color:transparent;
-     -webkit-print-color-adjust:exact 
+     -webkit-print-color-adjust:exact;
+     print-color-adjust:exact
 }
  .sb-wrapper .sb-icon,.sb-wrapper .sb-text{
      display:flex;
@@ -153,7 +154,8 @@
      padding:0;
      line-height:2.571em;
      background-color:transparent;
-     -webkit-print-color-adjust:exact 
+     -webkit-print-color-adjust:exact;
+     print-color-adjust:exact 
 }
  .sb-wrapper .sb-icon,.sb-wrapper .sb-text{
      display:flex;
@@ -285,7 +287,8 @@
      padding:0;
      line-height:2.571em;
      background-color:transparent;
-     -webkit-print-color-adjust:exact 
+     -webkit-print-color-adjust:exact;
+     print-color-adjust:exact 
 }
  .sb-wrapper .sb-icon,.sb-wrapper .sb-text{
      display:flex;
@@ -477,7 +480,8 @@
      padding:0;
      line-height:2.571em;
      background-color:transparent;
-     -webkit-print-color-adjust:exact 
+     -webkit-print-color-adjust:exact;
+     print-color-adjust:exact 
 }
  .sb-wrapper .sb-icon, .sb-wrapper .sb-text {
      display:flex;
@@ -609,7 +613,8 @@
      padding:0;
      line-height:2.571em;
      background-color:transparent;
-     -webkit-print-color-adjust:exact 
+     -webkit-print-color-adjust:exact;
+     print-color-adjust:exact 
 }
  .sb-wrapper .sb-icon, .sb-wrapper .sb-text {
      display:flex;
@@ -6620,7 +6625,7 @@ select.mat-input-element:not(:disabled){
 }
  .mat-mdc-checkbox .mdc-checkbox__background {
      -webkit-print-color-adjust:exact;
-     color-adjust:exact 
+     print-color-adjust:exact 
 }
  .mat-mdc-checkbox._mat-animation-noopable *, .mat-mdc-checkbox._mat-animation-noopable *::before {
      transition:none !important;

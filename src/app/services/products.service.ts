@@ -3,8 +3,7 @@ import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { debounceTime, delay, switchMap, tap } from 'rxjs/operators';
 import { SortColumn, SortDirection } from './../directives/products-sortable.directive';
 import { FormGroup } from '@angular/forms';
-import { SERVER_URL } from './../constants';
-import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';import { HttpClient } from '@angular/common/http';
 import * as clinicas from './../data/constants/mock/clinicas.json';
 import * as planes from './../../../public/products.json';
 import { ItemsService } from './items.service';
@@ -99,7 +98,7 @@ interface SearchResult {
   public clinicas: any = (clinicas as any).default;
   public secureProducts: any = (planes as any).default; 
 
-    serverUrl = SERVER_URL;
+    serverUrl = environment.apiUrl;
     user = [];
     Products$: any;
     productRating: any;

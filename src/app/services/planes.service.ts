@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, Subject} from 'rxjs';
 import { Planes } from '../data/interfaces/planes';
-import { SERVER_URL } from '../constants';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -12,7 +12,7 @@ export class PlanesService {
   private planes$: Subject<Planes[]> = new Subject();
   private _search$ = new Subject<void>();
 
-  private url = SERVER_URL;
+  private url = environment.apiUrl;
 
   httpOptions = {
     headers: new HttpHeaders({

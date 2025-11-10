@@ -18,18 +18,6 @@ export const routes: Routes = [
         title: 'App Home'
       },
       {
-        path: INTERNAL_PATHS.ASESORI_CREDIT_DEFAULT,
-        loadChildren: () =>
-          import('./modules/credit/credit.routes').then( m => m.routes ),
-        title: 'App Credit'
-      },
-      {
-        path: INTERNAL_PATHS.ASESORI_INSURANCE_DEFAULT,
-        loadChildren: () =>
-          import('./modules/insurance/insurance.routes').then( m => m.routes ),
-        title: 'App Seguros'
-      },
-      {
         path: INTERNAL_PATHS.ASESORI_SALUD_DEFAULT,
         loadChildren: () =>
           import('./modules/salud/salud.routes').then( m => m.routes ),

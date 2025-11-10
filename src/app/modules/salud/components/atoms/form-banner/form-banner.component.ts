@@ -2,7 +2,6 @@ import { Component,Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DialogService } from './../../../../../services/dialog.service';
-import { FormularioComponent } from "./../formulario/formulario.component";
 import { DialogModule } from 'primeng/dialog';
 
 @Component({
@@ -11,7 +10,6 @@ import { DialogModule } from 'primeng/dialog';
     styleUrls: ['./form-banner.component.css'],
     imports: [
       FormsModule,CommonModule,
-      FormularioComponent,
       DialogModule]
 })
 export class FormBannerComponent implements OnInit{

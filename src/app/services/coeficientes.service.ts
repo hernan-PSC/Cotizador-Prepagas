@@ -1,12 +1,12 @@
 import { Injectable, OnInit  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { SERVER_URL } from '../constants';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CoeficientesService {
-  private apiUrl = SERVER_URL + '/empresas'; // Reemplaza con la URL de tu API
+  private apiUrl = environment.apiUrl + '/empresas'; // Reemplaza con la URL de tu API
   coeficientes: { [nombreEmpresa: string]: number } = {};
   constructor(private http: HttpClient) {
     this.inicializarCoeficientes();
