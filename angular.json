@@ -36,12 +36,18 @@
               "src/assets/css/magnific-popup.css",
               "src/assets/css/classic-themes.min68b3.css",
               "src/assets/css/queplan/style-queplan.css",
-              "src/global_styles.css"
+              "src/global_styles.css",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css", 
+              "node_modules/primeng/resources/primeng.min.css", 
+              "node_modules/primeicons/primeicons.css",
+              "@angular/material/prebuilt-themes/deeppurple-amber.css", // Example pre-built theme
+
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/assets/js/funciones.js",
-              "src/assets/js/scripts/vendor.js"
+              "src/assets/js/scripts/vendor.js",
+
             ]
           },
           "configurations": {
@@ -118,7 +124,12 @@
               "src/assets/css/magnific-popup.css",
               "src/assets/css/classic-themes.min68b3.css",
               "src/assets/css/queplan/style-queplan.css",
-              "src/global_styles.css"
+              "src/global_styles.css",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css", 
+              "node_modules/primeng/resources/primeng.min.css", 
+              "node_modules/primeicons/primeicons.css",
+              "@angular/material/prebuilt-themes/deeppurple-amber.css", // Example pre-built theme
+
 
             ],
             "scripts": [

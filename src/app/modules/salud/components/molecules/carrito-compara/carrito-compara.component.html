@@ -17,10 +17,13 @@
 
   <button *ngIf="listaIterarComparar().length > 1" type="button" class="btn btn-success" (click)="displayDialog = true">Comparalos</button>
   <p-dialog header="Comparador de Planes" [(visible)]="displayDialog" >
-    <app-compara-attributes
-      [productos]="listaIterarComparar()"
-      ></app-compara-attributes>
 
+
+   
+            <app-compara-item
+      [productos]="listaIterarComparar()" [clinicasVal]="clinicasVal"
+      ></app-compara-item>
+   
   </p-dialog>
 
 

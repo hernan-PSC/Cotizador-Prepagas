@@ -49,7 +49,7 @@
         <thead class="sticky-header">
           <tr>
             <th>Nombre</th>
-             <ng-container *ngFor="let prop of clinicasVal[0][0] | keyvalue">
+             <ng-container *ngFor="let prop of clinicasVal[0]['0'] | keyvalue">
               <ng-container *ngIf="prop.key !== 'nombre' && prop.key !== 'barrio' && prop && prop.key">
                 <th >{{ findEmpresaById(prop.key) }}  <br>{{ findNameById(prop.key) }}            
                 </th>      

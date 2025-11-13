@@ -238,7 +238,11 @@
    <div id="mybutton" >
       <button class="feedback" mat-raised-button color="primary"
          matBadge matBadgePosition="after" matBadgeColor="accent" >
-         <app-carrito-compara ></app-carrito-compara>
+         <app-carrito-compara 
+             [productos]="compareProdList()"
+             [clinicasVal]="compareProdClinicas(compareProdList())"
+             [items]="compareProdClinicas(compareProdList())"
+         ></app-carrito-compara>
          <span class="close" (click)="vaciarCompareProdList()" style="position: absolute; top: 5px; right: 5px; font-size: 20px; ">x</span>
       </button>
    </div>

@@ -1,24 +1,24 @@
 <div class="container d-flex align-items-center justify-content-center">
   <div class="item active">
     <a (click)="filter('clinicas')">
-      <img src="../../../assets/images/iconos/sanatorio.png" alt="">
+      <img src="../../../assets/images/iconos/ubicaciones.webp" alt="">
     </a>
   </div>
   <div class="item">
     <a (click)="filter('attributes')">
-      <img src="../../../assets/images/iconos/sanatorio.png" alt="">
+      <img src="../../../assets/images/iconos/corazon_tilde.webp" alt="">
     </a>
   </div>
-  <div class="item">
+  <!-- <div class="item">
     <a (click)="filter('folleto')">
       <img src="../../../assets/images/iconos/sanatorio.png" alt="">
     </a>
   </div>
   <div class="item">
     <a (click)="filter('')">
-      <img src="../../../assets/images/iconos/sanatorio.png" alt="">
+      <img src="../../../../../assets/images/iconos/sanatorio.png" alt="">
     </a>
-  </div>
+  </div> -->
 </div>
 
 <app-compara-clinicas *ngIf="showDiv2" [productos]="productos" [clinicasVal]='clinicasVal' [items]='items'></app-compara-clinicas>

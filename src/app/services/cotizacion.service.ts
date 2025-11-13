@@ -34,7 +34,7 @@ export class CotizacionService {
    */
   getPrecios(formCotizar: any): Observable<any> {
     const api_url = `${this.url}/cotizacion`;
-
+console.log('api_url   :',api_url)
     // Asigna el Observable a la propiedad 'precios'.
     this.precios = this.http.post<any>(api_url, formCotizar).pipe(
       // Utiliza 'tap' para efectos secundarios (ej. logging) sin alterar el flujo de datos.

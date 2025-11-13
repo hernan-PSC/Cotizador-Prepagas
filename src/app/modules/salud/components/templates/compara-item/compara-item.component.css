@@ -26,8 +26,8 @@
     word-wrap: break-word;
     background: #fff;
     background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: .25rem;
+    border: none;
+
 }
 
 .item a:hover {

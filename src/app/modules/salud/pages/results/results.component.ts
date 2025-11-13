@@ -494,7 +494,7 @@ actualizarLista() {
         // console.log(products[i].name)
       }
       obj["nombre"] = clinicas[x].entity;
-      obj["barrio"] = clinicas[x].ubicacion.barrio;
+      obj["barrio"] = clinicas[x].barrio;
       for (let i = 0; i < products.length; i++) {
         let id = products[i].item_id;
         if (clinicas[x].cartillas.includes(id) == true) {
@@ -521,19 +521,19 @@ actualizarLista() {
       planesElegidos = clinicas[n].planesSeleccionados;
     }
     const clCaba = clinicas.filter(function (clinica) {
-      return clinica.ubicacion.region === "CABA";
+      return clinica.region === "CABA";
     });
     const clNorte = clinicas.filter(function (clinica) {
-      return clinica.ubicacion.region === "GBA-Norte";
+      return clinica.region === "GBA-Norte";
     });
     const clOeste = clinicas.filter(function (clinica) {
-      return clinica.ubicacion.region === "GBA-Oeste";
+      return clinica.region === "GBA-Oeste";
     });
     const clSur = clinicas.filter(function (clinica) {
-      return clinica.ubicacion.region === "GBA-Sur";
+      return clinica.region === "GBA-Sur";
     });
     const clLaPlata = clinicas.filter(function (clinica) {
-      return clinica.ubicacion.region === "La Plata";
+      return clinica.region === "La Plata";
     });
     // let clinicasHeader = clinicas[0]['planesSeleccionados'];
     let clinicasCaba = clCaba.map((planes) => planes.valida);

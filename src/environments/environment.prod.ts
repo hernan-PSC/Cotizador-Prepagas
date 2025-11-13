@@ -5,5 +5,6 @@
 
 export const environment = {
   production: true,
-  apiUrl: "https://googlesheets.avalianonline.com.ar",
+  apiUrl: "http://localhost:5200"
+  // apiUrl: "https://googlesheets.avalianonline.com.ar",
 };
