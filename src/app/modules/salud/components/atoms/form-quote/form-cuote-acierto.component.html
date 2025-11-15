@@ -17,11 +17,11 @@
           <div class="btn-wrapper--main btn-wrapper btn-wrapper--floating btn-wrapper--equal-sizes sm-btn-wrapper"
             name="plan_type"><button
               class="btn--main btn btn--vertical" (click)="selectPlanType('adulto individual')" ><img class="icon" src="style/images/sprite.svg#form--individual"
-                alt="ícone de plano Individual" aria-hidden="true"> Individual / adesão</button> <button
+                alt="ícono de plan Individual" aria-hidden="true"> Individual / adesão</button> <button
               class="btn--main btn btn--vertical" (click)="selectPlanType('adulto pareja')"><img class="icon" src="style/images/sprite.svg#form--family"
-                alt="ícone de plano família" aria-hidden="true"> familiar</button> <button
+                alt="ícono de plan família" aria-hidden="true"> familiar</button> <button
               class="btn--main btn btn--vertical"><img class="icon" src="style/images/sprite.svg#form--business"
-                alt="ícone de plano empresarial" aria-hidden="true"> empresarial</button>
+                alt="ícono de plan empresarial" aria-hidden="true"> empresarial</button>
               </div>
           <div class="error"><span>Este campo é
               requerido.</span>
@@ -34,10 +34,10 @@
           <div class="btn-wrapper btn-wrapper--floating btn-wrapper--equal-sizes" name="hasCNPJ"><button
               class="btn--main btn btn--vertical "
               ng-click="lead.hasCNPJ = 'Sim'"><img class="icon" src="style/images/sprite.svg#theme--like"
-                alt="ícone de like" aria-hidden="true"> Sim</button> <button
+                alt="ícono de like" aria-hidden="true"> Sim</button> <button
               class="btn--main btn btn--vertical "
               ng-click="lead.hasCNPJ = 'Não'"><img class="icon" src="style/images/sprite.svg#theme--dislike"
-                alt="ícone de dislike" aria-hidden="true"> Não</button></div>
+                alt="ícono de dislike" aria-hidden="true"> Não</button></div>
           <div class="error"><span ng-show="attemptedSubmit[step] && lead.hasCNPJ === undefined">Este campo é
               requerido.</span></div>
         </div>
@@ -49,7 +49,7 @@
           <div></div>
           <div><button class="btn btn--next btn--primary" type="submit" ng-click="submit($event)">Continuar <img
                 class="icon icon--small icon--right" src="style/images/sprite.svg#theme--chevron-right"
-                alt="ícone de avançar" aria-hidden="true"></button></div>
+                alt="ícono de avançar" aria-hidden="true"></button></div>
         </div>
       </div>
     </form>
@@ -64,7 +64,7 @@
           class="question form-group"></div>
         <div ng-show='((lead.plan_type==="Empresarial")||(lead.hasCNPJ==="Sim"))'
           style="font-size:12px;color:#4d72aa;padding:10px 0"><img class="icon icon--small"
-            src="style/images/sprite.svg#form--lock" alt="ícone de dica" aria-hidden="true"> Com o CNPJ nós conseguimos
+            src="style/images/sprite.svg#form--lock" alt="ícono de dica" aria-hidden="true"> Com o CNPJ nós conseguimos
           te oferecer uma cotação personalizada</div>
         <div class="form-group"></div><label
           class="form-group-label" for="number_users">Número de usuários</label>
@@ -96,7 +96,7 @@
           class="question form-group"></div>
         <div ng-show='((lead.plan_type!=="Empresarial")&&(lead.hasCNPJ==="Não"))'
           style="font-size:12px;color:#4d72aa;padding:10px 0"><img class="icon icon--small"
-            src="style/images/sprite.svg#form--lock" alt="ícone de dica" aria-hidden="true"> Com o CPF nós conseguimos
+            src="style/images/sprite.svg#form--lock" alt="ícono de dica" aria-hidden="true"> Com o CPF nós conseguimos
           te oferecer uma cotação personalizada</div>
         <div vemm-text vemm-field="profession" vemm-label="Ocupação/Profissão"
           vemm-conditional='(((lead.plan_type==="Individual")||(lead.plan_type==="Familiar"))&&(lead.hasCNPJ==="Não"))'
@@ -133,10 +133,10 @@
       <div class="container container--half-width">
         <div class="btn-wrapper"><button class="btn btn--ghost btn--previous" ng-click="_previousStep()"><img
               class="icon icon--small icon--left" src="style/images/sprite.svg#theme--chevron-left"
-              alt="ícone de retroceder" aria-hidden="true"> voltar</button>
+              alt="ícono de retroceder" aria-hidden="true"> voltar</button>
           <div><button class="btn btn--next btn--primary" type="submit" ng-click="submit($event)">Continuar <img
                 class="icon icon--small icon--right" src="style/images/sprite.svg#theme--chevron-right"
-                alt="ícone de avançar" aria-hidden="true"></button></div>
+                alt="ícono de avançar" aria-hidden="true"></button></div>
         </div>
       </div>
     </form>
@@ -149,11 +149,11 @@
             <div class="btn-wrapper btn-wrapper--floating btn-wrapper--equal-sizes" name="preferred_contact_method">
               <button class="btn btn--vertical "
                 ng-click="lead.preferred_contact_method = 'calls'"><img class="icon"
-                  src="style/images/sprite.svg#theme--social-chat" alt="ícone de chat" aria-hidden="true">
+                  src="style/images/sprite.svg#theme--social-chat" alt="ícono de chat" aria-hidden="true">
                 Telefone</button> <button
                 class="btn btn--vertical "
                 ng-click="lead.preferred_contact_method = 'whatsapp'"><img class="icon"
-                  src="style/images/sprite.svg#theme--social-whatsapp" alt="ícone de whatsapp" aria-hidden="true">
+                  src="style/images/sprite.svg#theme--social-whatsapp" alt="ícono de whatsapp" aria-hidden="true">
                 Whatsapp</button></div>
           </div>
           <div class="error"><span ng-show="attemptedSubmit[step] && lead.preferred_contact_method === undefined">Este
@@ -172,25 +172,25 @@
       <div class="container container--half-width">
         <div class="btn-wrapper"><button class="btn btn--ghost btn--previous" ng-click="_previousStep()"><img
               class="icon icon--small icon--left" src="style/images/sprite.svg#theme--chevron-left"
-              alt="ícone de retroceder" aria-hidden="true"> voltar</button> <button class="btn btn--primary btn--next"
+              alt="ícono de retroceder" aria-hidden="true"> voltar</button> <button class="btn btn--primary btn--next"
             type="submit" ng-click="submitAndClose($event)">Continuar <img class="icon icon--small icon--right"
-              src="style/images/sprite.svg#theme--chevron-right" alt="ícone de avançar" aria-hidden="true"></button>
+              src="style/images/sprite.svg#theme--chevron-right" alt="ícono de avançar" aria-hidden="true"></button>
         </div>
       </div>
     </form>
     <form vemm-step vemm-step-group="thank-you" class="etapa final">
       <div class="thankyou-card" ng-show="lead.preferred_contact_method === 'calls'"><img class="icon"
-          src="style/images/sprite.svg#theme--thankyou-phone" alt="ícone de agradecimento">
+          src="style/images/sprite.svg#theme--thankyou-phone" alt="ícono de agradecimento">
         <div class="thankyou-card--title">Obrigado!</div>
         <div class="thankyou-card--body">Entraremos em contato <b>em até 2 minutos!</b></div>
       </div>
       <div class="thankyou-card" ng-show="lead.preferred_contact_method === 'chats'"><img class="icon"
-          src="style/images/sprite.svg#theme--thankyou-chat" alt="ícone de agradecimento">
+          src="style/images/sprite.svg#theme--thankyou-chat" alt="ícono de agradecimento">
         <div class="thankyou-card--title">Obrigado!</div>
         <div class="thankyou-card--body">Estamos te conectando com um dos nossos atendentes.</div>
       </div>
       <div class="thankyou-card" ng-show="lead.preferred_contact_method === 'whatsapp'"><img class="icon"
-          src="style/images/sprite.svg#theme--thankyou-whatsapp" alt="ícone de agradecimento">
+          src="style/images/sprite.svg#theme--thankyou-whatsapp" alt="ícono de agradecimento">
         <div class="thankyou-card--title">Obrigado!</div>
         <div class="thankyou-card--body">Enviamos uma mensagem para você!</div>
       </div>

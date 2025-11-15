@@ -189,11 +189,11 @@ span {
 }
 
 .menos{
-  background-image:url(../../../../../../assets/css/imagens/down-arrow.png)
+  background-image:url(../../../../../../assets/images/formulario/down_arrow.svg)
 }
 
 .mas{
-  background-image:url(../../../../../../assets/css/imagens/up-arrow.png)
+  background-image:url(../../../../../../assets/images/formulario/up_arrow.svg)
 }
 .menos,
 .mas {
@@ -425,7 +425,8 @@ body.theme .icon{
   width:30px;
   height:30px;
   margin-left:auto;
-  margin-right:auto
+  margin-right:auto;
+
 }
 
 body.theme .icon.icon--small{
@@ -1280,3 +1281,26 @@ input {
   align-items: center;
   gap: 10px; /* optional: space between elements */
 }
+body {
+  font-family: sans-serif;
+  font-size: 100%;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.icons li {
+  margin: 3px;
+}
+
+.icons svg {
+  display: block;
+  width: 100%;
+  fill: #f7d674;
+}
+

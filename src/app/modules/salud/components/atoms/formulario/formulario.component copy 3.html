@@ -180,7 +180,7 @@
 					<div class="container container--half-width" *ngIf="selectedGrupoType.includes('hijos') && selectedAportesType !=='' &&  selectedVolverType !== 'zona'">
 						<div class="btn-wrapper">
 							<button class="btn btn--ghost btn--previous" (click)="selectVolverType('zona')">
-								<img class="icon icon--small icon--left" src="../../../../../../assets/js/scripts/style/images/sprite.svg#theme--chevron-left" alt="ícone de retroceder" aria-hidden="true" />
+								<img class="icon icon--small icon--left" src="../../../../../../assets/js/scripts/style/images/sprite.svg#theme--chevron-left" alt="ícono de retroceder" aria-hidden="true" />
 								volver
 							</button>
 						</div>
@@ -228,11 +228,11 @@
 				<div>
 					<div class="btn-wrapper btn-wrapper--floating btn-wrapper--equal-sizes" name="preferred_contact_method">
 						<button class="btn btn--vertical" (click)="selectContactoType('phone')">
-							<img class="icon" src="../../../../../../assets/js/scripts/style/images/sprite.svg#theme--social-chat" alt="ícone de chat" aria-hidden="true" />
+							<img class="icon" src="../../../../../../assets/js/scripts/style/images/sprite.svg#theme--social-chat" alt="ícono de chat" aria-hidden="true" />
 							TELÉFONO
 						</button>
 						<button class="btn btn--vertical" (click)="selectContactoType('whatsapp')">
-							<img class="icon" src="../../../../../../assets/js/scripts/style/images/sprite.svg#theme--social-whatsapp" alt="ícone de whatsapp" aria-hidden="true" />
+							<img class="icon" src="../../../../../../assets/js/scripts/style/images/sprite.svg#theme--social-whatsapp" alt="ícono de whatsapp" aria-hidden="true" />
 							Whatsapp
 						</button>
 					</div>
@@ -247,13 +247,13 @@
 	</form> -->
 	
 	<div class="thankyou-card" *ngIf="selectedContactoType === 'phone' && formularioEnviado === true">
-		<img class="icon" src="../../../../../../assets/js/scripts/style/images/sprite.svg#theme--thankyou-phone" alt="ícone de agradecimento" />
+		<img class="icon" src="../../../../../../assets/js/scripts/style/images/sprite.svg#theme--thankyou-phone" alt="ícono de agradecimento" />
 		<div class="thankyou-card--title">Gracias!</div>
 		<div class="thankyou-card--body">Entraremos em contato <b>em até 2 minutos!</b></div>
 	</div>
 	
 	<div class="thankyou-card" *ngIf="selectedContactoType === 'whatsapp' && formularioEnviado === true">
-		<img class="icon" src="../../../../../../assets/js/scripts/style/images/sprite.svg#theme--thankyou-whatsapp" alt="ícone de agradecimento" />
+		<img class="icon" src="../../../../../../assets/js/scripts/style/images/sprite.svg#theme--thankyou-whatsapp" alt="ícono de agradecimento" />
 		<div class="thankyou-card--title">Gracias!</div>
 		<div class="thankyou-card--body">Estaremos enviandole un mensaje!</div>
 	</div>

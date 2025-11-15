@@ -1,29 +1,28 @@
- <form  >
+
+ <form >
 
 <div *ngIf="isStepperVisible">
-      
     <mat-stepper [linear]="isLinear" #stepper>
-      
       <mat-step [stepControl]="firstFormGroup">
           <ng-template matStepLabel>Grupo Familiar</ng-template>
       
           <div class="flex-container">
               <b class="btn--main btn btn--vertical btn-primary square1" *ngIf="this.formCotizar.get('group').value === '' ||  this.formCotizar.get('group').value === 1" [class.active]="formCotizar.get('group').value === 1" (click)="selectGroup(1)">
-                  <img src="../../../../../../assets/images/formulario/individual.svg" />
+                  <img src="../../../../../../assets/js/scripts/style/images/17319805201332933099.webp" />
               </b>
               <div class="overlay"></div>
               <b class="btn--main btn btn--vertical btn-primary square1" *ngIf="formCotizar.get('group').value === '' || formCotizar.get('group').value === 3" [class.active]="formCotizar.get('group').value === 3" (click)="selectGroup(3)">
-                  <img src="../../../../../../assets/images/formulario/matrimonio.svg" />
+                  <img src="../../../../../../assets/js/scripts/style/images/zzcasdb.webp" />
               </b>
               <div class="overlay"></div>
           </div>
           <div class="flex-container">
               <b class="btn--main btn btn--vertical btn-primary square1" *ngIf="this.formCotizar.get('group').value === '' || this.formCotizar.get('group').value === 2" [class.active]="formCotizar.get('group').value === 2" (click)="selectGroup(2)">
-                  <img src="../../../../../../assets/images/formulario/indhijos.svg" />
+                  <img src="../../../../../../assets/js/scripts/style/images/indhijos.webp" />
               </b>
               <div class="overlay"></div>
               <b class="btn--main btn btn--vertical btn-primary square1" *ngIf="this.formCotizar.get('group').value === '' || this.formCotizar.get('group').value === 4" [class.active]="formCotizar.get('group').value === 4" (click)="selectGroup(4)">
-                  <img src="../../../../../../assets/images/formulario/mathijos.svg" />
+                  <img src="../../../../../../assets/js/scripts/style/images/173198052013329099.webp" />
               </b>
               <div class="overlay"></div>
           </div>
@@ -115,47 +114,46 @@
 
               
           </div>
+		  <form [formGroup]="secondFormGroup">
 
+	  </form>
 	</mat-step>
-     	 
       <mat-step>
         <ng-template matStepLabel>Done</ng-template>
-	
- <div class="container " formGroupName="personalData">
-      <div class="form-group">
+  
+          <div class="container ">
+                          <div class="form-group">
                   <label>
                       Nombre completo
                   </label>
                   <input #campoNombre type="text" required />
               </div>
-    </div>
-     <div class="form-group">
+              <div class="form-group">
                   <label >
                       email
                   </label>
                   <input type="text" required />
               </div>
-               <div class="form-group ">
+              <div class="form-group ">
                   <label >
                       Celular
                   </label>
                   <input type="text" 
 				  required />
               </div>
-                  <div>
-                  <button class="btn" (click)="verCotizacion();" type="submit">ver cotizacion</button>
+      
+              <div>
+                  <button class="btn" (click)="verCotizacion()" type="submit">ver cotizacion</button>
               </div>
-              
-    
+  
+          </div>
   
         <div>
           <!-- <button mat-button matStepperPrevious>Back</button>
           <button mat-button (click)="stepper.reset()">Reset</button> -->
         </div>
       </mat-step>
-	
     </mat-stepper>
-     
   </div>
   <!-- Este contenedor se muestra cuando se hace clic en "ver cotizacion" -->
     <div  *ngIf="isCotizacionVisible && this.selectedContactoType ===''" class="container container--half-width">
@@ -169,16 +167,13 @@
           <div>
               <div class="btn-wrapper btn-wrapper--floating btn-wrapper--equal-sizes" name="preferred_contact_method">
                   <button class="btn btn--vertical" (click)="selectContactoType('phone')">
-                      <img class="icon" src="../../../../../../assets/images/formulario/sprite.svg#theme--social-chat" alt="ícono de chat" aria-hidden="true" />
+                      <img class="icon" src="../../../../../../assets/js/scripts/style/images/sprite.svg#theme--social-chat" alt="ícone de chat" aria-hidden="true" />
                       TELÉFONO
                   </button>
-                  
-		   <button class="btn btn--vertical" (click)="selectContactoType('whatsapp')">
-  
-
-        <img class="icon" src="../../../../../../assets/images/formulario/sprite.svg#theme--social-whatsapp" alt="ícono de whatsapp" aria-hidden="true">
-			Whatsapp
-		   </button>
+                  <button class="btn btn--vertical" (click)="selectContactoType('whatsapp')">
+                      <img class="icon" src="../../../../../../assets/js/scripts/style/images/sprite.svg#theme--social-whatsapp" alt="ícone de whatsapp" aria-hidden="true" />
+                      Whatsapp
+                  </button>
               </div>
           </div>
           <div class="error">
@@ -191,19 +186,16 @@
   
   
   <div class="thankyou-card" *ngIf="selectedContactoType === 'phone'">
-         <svg class="icon">
-          </svg>
       <img class="icon"
-         src="../../../../../../assets/images/formulario/sprite.svg#theme--thankyou-phone" alt="ícono de agradecimento">
+         src="../../../../../../assets/js/scripts/style/images/sprite.svg#theme--thankyou-phone" alt="ícone de agradecimento">
       <div class="thankyou-card--title">Gracias!</div>
       <div class="thankyou-card--body">Entraremos em contato <b>em até 2 minutos!</b></div>
     </div>
     
     
     <div class="thankyou-card" *ngIf="selectedContactoType === 'whatsapp'">
-
-       <img class="icon"
-         src="../../../../../../assets/images/formulario/sprite.svg#theme--thankyou-whatsapp" alt="ícono de agradecimento">
+      <img class="icon"
+         src="../../../../../../assets/js/scripts/style/images/sprite.svg#theme--thankyou-whatsapp" alt="ícone de agradecimento">
       <div class="thankyou-card--title">Gracias!</div>
       <div class="thankyou-card--body">Estaremos enviandole un mensaje!</div>
     </div>

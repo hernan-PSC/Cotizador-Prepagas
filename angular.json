@@ -23,7 +23,7 @@
               "src/favicon.ico",
               "src/assets",
               { "glob": "products.json", "input": "./", "output": "./assets/" }
-
+              "src/assets/js/scripts/style/images/sprites"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",

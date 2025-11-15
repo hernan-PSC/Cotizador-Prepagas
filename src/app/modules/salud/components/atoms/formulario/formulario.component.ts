@@ -146,7 +146,6 @@ isLinear = false;
    
    ) {  
      this.buildForm();
-     // this.buildFormGroups();
     
  
    } 
@@ -211,12 +210,12 @@ isLinear = false;
  }
  salvar(event: any){
    if(this.formPersonalData.valid){
-     // console.log('Formulario en metodo save');
-     // this.retornarService.setFormularioData(this.formCotizar.value)
+     console.log('Formulario en metodo save');
+     this.retornarService.setFormularioData(this.formCotizar.value)
  
-     // console.log(this.formCotizar.value);
+     console.log(this.formCotizar.value);
    } else {
-     // console.log('formulario invalido');
+     console.log('formulario invalido');
  
    };
  this.router.navigate(['/salud/results']);
@@ -247,6 +246,7 @@ isLinear = false;
     cantAport: [0],
     afinidad: [false],
     bonAfinidad: [0],
+    
     personalData: this.formBuilder.group({
      // name: ['',[Validators.required, Validators.maxLength(10),Validators.pattern(/^[a-zA-Z/s]*$/)]],
      // email: ['',[Validators.required,Validators.email]],
@@ -257,7 +257,7 @@ isLinear = false;
      phone: [''],
      region: [''],
    })
-     
+
     });
   }
  ngOnInit(): void
