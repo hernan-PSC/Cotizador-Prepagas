@@ -1,25 +1,35 @@
-<div class="container d-flex align-items-center justify-content-center">
-  <div class="item active">
-    <a (click)="filter('clinicas')">
-      <img src="../../../assets/images/iconos/ubicaciones.webp" alt="">
-    </a>
-  </div>
-  <div class="item">
-    <a (click)="filter('attributes')">
-      <img src="../../../assets/images/iconos/corazon_tilde.webp" alt="">
-    </a>
-  </div>
-  <!-- <div class="item">
-    <a (click)="filter('folleto')">
-      <img src="../../../assets/images/iconos/sanatorio.png" alt="">
-    </a>
-  </div>
-  <div class="item">
-    <a (click)="filter('')">
-      <img src="../../../../../assets/images/iconos/sanatorio.png" alt="">
-    </a>
-  </div> -->
-</div>
 
-<app-compara-clinicas *ngIf="showDiv2" [productos]="productos" [clinicasVal]='clinicasVal' [items]='items'></app-compara-clinicas>
-<app-compara-attributes *ngIf="showDiv1" [productos]="productos"></app-compara-attributes>
+<mat-tab-group animationDuration="100ms" id="mat-tab-group">
+  
+  <mat-tab >
+        <ng-template mat-tab-label>
+         <mat-icon style="margin-right:5px" svgIcon="ubicaciones"></mat-icon>
+          
+      Clinicas
+    </ng-template>
+    <div class="overflow-x-auto w-full" style="overflow-y: visible; height: 100%">
+     <app-compara-clinicas  [productos]="productos" [clinicasVal]='clinicasVal' [items]='items'></app-compara-clinicas>
+
+    </div>
+  </mat-tab>
+  
+  <mat-tab >
+        <ng-template mat-tab-label>
+      <mat-icon style="margin-right:5px"   svgIcon="corazon_tilde"></mat-icon>
+
+      Beneficios
+    </ng-template>
+    <div class="overflow-x-auto w-full" style="overflow-y: visible; height: 100%">
+      <app-compara-attributes [productos]="productos"></app-compara-attributes>
+
+    </div>
+</mat-tab>
+
+</mat-tab-group>
+
+      <!-- <img src="../../../assets/images/iconos/ubicaciones.webp">
+
+  
+      <img src="../../../assets/images/iconos/corazon_tilde.webp">
+
+ -->

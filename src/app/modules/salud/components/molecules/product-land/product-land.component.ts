@@ -10,6 +10,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { Planes } from "./../../../../../data/interfaces/planes";
+
 export interface DialogData1 {
   name: string;
   price: Number;
@@ -38,7 +40,6 @@ export class ProductLandComponent implements OnInit{
   @Input() product: any;
   @Input() compareList: any;
   @Output() showProduct = new EventEmitter<string>();
-  
   bodyText: string;
   name: string;
   price: Number;

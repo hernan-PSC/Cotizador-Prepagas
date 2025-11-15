@@ -16,15 +16,25 @@
   </div>
 
   <button *ngIf="listaIterarComparar().length > 1" type="button" class="btn btn-success" (click)="displayDialog = true">Comparalos</button>
-  <p-dialog header="Comparador de Planes" [(visible)]="displayDialog" >
+
+<!-- Importante: No usar 'header' cuando se usa el template #headless -->
+<p-dialog 
+  [(visible)]="displayDialog" 
+  [style]="{ width: '75vw', height: '120vh', maxWidth: '1000px', margin: '15vh' }"
+  [modal]="true" 
+  [resizable]="false" 
+ 
+[breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+>
+ 
+      <!-- Aquí va tu componente principal -->
+      <app-compara-item
+        [productos]="listaIterarComparar()" 
+        [clinicasVal]="clinicasVal">
+      </app-compara-item>
 
 
-   
-            <app-compara-item
-      [productos]="listaIterarComparar()" [clinicasVal]="clinicasVal"
-      ></app-compara-item>
-   
-  </p-dialog>
+</p-dialog>
 
 
 

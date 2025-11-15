@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, AfterViewInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, Inject,Input, OnInit, AfterViewInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog'; // Agrega DynamicDialogRef y DynamicDialogConfig
 import { NgFor } from '@angular/common';
 import { TabViewModule } from 'primeng/tabview';
@@ -17,6 +17,7 @@ import { TabViewModule } from 'primeng/tabview';
 })
 export class ClinicasListGroupPrimengComponent implements OnInit {
   product: any;
+  @Input() produc: any;
 
   selectedClinicas: any;
   primeTabLabels = [{title:'TODAS'},{title:'CABA'},{title: 'GBA-Sur'},{title: 'GBA-Norte'},{title: 'GBA-Oeste'},{title:'La Plata'}];

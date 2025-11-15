@@ -1,6 +1,6 @@
-@import './tailwind-override';
-@import './variables';
-@import './root';
-@import './reset';
+@use './tailwind-override';
+@use './variables';
+@use './root';
+@use './reset';
 
-@import './components';
+@use './components';

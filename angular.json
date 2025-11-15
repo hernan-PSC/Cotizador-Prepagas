@@ -110,7 +110,9 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/assets/favicon/favicon.ico",
-              "src/assets"
+              "src/assets",
+             { "glob": "products.json", "input": "./", "output": "./assets/" }
+
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.css",

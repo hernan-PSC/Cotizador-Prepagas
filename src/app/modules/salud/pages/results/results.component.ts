@@ -85,9 +85,10 @@ import {MatSelectModule} from '@angular/material/select';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ResponsiveService } from "../../../../services/responsive.service";
-import { FormularioComponent } from "./../../components/atoms/formulario/formulario.component";
+import { DefaultComponent } from "./../default/default.component";
 import { DialogService } from "src/app/services/dialog.service";
 import { register } from 'swiper/element/bundle';
+import { MasDetallesComponent } from './../../components/templates/mas-detalles/mas-detalles.component';
 register();
 
 declare var addProp: any;
@@ -144,7 +145,8 @@ interface AutoCompleteCompleteEvent {
     MatSelectModule,
     CommonModule,
     AutoCompleteModule,
-    FormularioComponent
+    DefaultComponent,
+    MasDetallesComponent
 ]
 })
 export class ResultsComponent implements OnInit, OnChanges, OnDestroy  {
@@ -298,23 +300,35 @@ return this.cadena
     }
   }
 
-  onShowDetail(id: string) {
-    console.log('this.productChosen en results fila 301  :',this.productChosen)
+  // onShowDetail(id: string) {
+  //   console.log('this.productChosen en results fila 301  :',this.productChosen)
 
-    console.log('product en results fila 300  :', id)
-    this.statusDetail = 'loading';
-    this.toggleProductDetail();
+  //   console.log('product en results fila 300  :', id)
+  //   this.statusDetail = 'loading';
+  //   this.toggleProductDetail();
   
 
-      const producto = this.productosFiltrados.find((prod: { item_id: string; }) => prod.item_id === id);
+  //     const producto = this.productosFiltrados.find((prod: { item_id: string; }) => prod.item_id === id);
 
   
      
-      if (producto) {
+  //     if (producto) {
+  //       this.productChosen = producto; // Asignar el producto seleccionado a 'productChosen'
+  //     } else {
+  //       console.log('Producto no encontrado');
+  //     }
+  // }
+
+  onShowDetail(id: string) {
+    console.log(" onShowDetail(id: string)  :", id)
+   const producto = this.productosFiltrados.find((prod: { item_id: string; }) => prod.item_id === id);
+if (producto) {
         this.productChosen = producto; // Asignar el producto seleccionado a 'productChosen'
       } else {
         console.log('Producto no encontrado');
       }
+      console.log(" producto  :", producto)
+    this.visible = true; // Mostramos el diálogo
   }
 // Función que actualiza isSmallScreen según el estado de la pantalla
 componentSelectorMode(breakpoints: { [key: string]: boolean }) {

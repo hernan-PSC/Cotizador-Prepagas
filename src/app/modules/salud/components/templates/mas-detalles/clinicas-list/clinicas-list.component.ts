@@ -1,7 +1,6 @@
-import { Component, Inject, OnInit, VERSION } from '@angular/core';
+import { Component, Inject, Input, OnInit, VERSION } from '@angular/core';
 import {MatDialogModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {DialogData2} from '../../../../components/molecules/product-card/product-card.component';
-import {DialogData1} from '../../../../components/molecules/product-land/product-land.component';
+import { Planes } from "../../../../../../data/interfaces/planes";
 
 
 
@@ -17,6 +16,8 @@ import {DialogData1} from '../../../../components/molecules/product-land/product
     standalone: true
 })
 export class ClinicasListComponent implements OnInit {
+    @Input() producto: Planes | null = null;
+
   product: any;
   public pdfSrc : string;
 folleto: string;
@@ -25,7 +26,7 @@ folleto: string;
 // Users: USERS[] = UsersJson;
 
   constructor(
-    public dialogRef: MatDialogRef<ClinicasListComponent>,@Inject(MAT_DIALOG_DATA) public data1: DialogData1,@Inject(MAT_DIALOG_DATA)public data2: DialogData2
+   
    ) {
 }
 
@@ -34,31 +35,19 @@ folleto: string;
 
 
   ngOnInit(): void {
-    if (this.data1){
-      console.log(this.data1.id),
-    console.log(this.data1.name),
-    console.log(this.data1.price),
-    console.log(this.data1.category),
-    console.log(this.data1.rating),
-    console.log(this.data1.clinicas),
-    console.log(this.data1.producto),
+    if (this.producto){
+      console.log(this.producto.item_id),
+    console.log(this.producto.name),
+    console.log(this.producto.price),
+    console.log(this.producto.category),
+    console.log(this.producto.rating),
+    console.log(this.producto.clinicas),
+    console.log(this.producto),
     console.log("pdfSrc");
-    this.product= this.data1.producto;
+    this.product= this.producto;
     this.folleto= 'assets/archivos/' + this.product.folleto[2] + '/beneficios/' + this.product.folleto[2]
-    this.pdfSrc = this.data1.folleto[0];
-    }else
-     if(this.data2){    
-      console.log(this.data2.id),
-      console.log(this.data2.name),
-      console.log(this.data2.price),
-      console.log(this.data2.category),
-      console.log(this.data2.rating),
-      console.log(this.data2.clinicas),
-      console.log(this.data2.producto),
-    this.product= this.data2.producto;
-    this.folleto= 'assets/archivos/' + this.product.folleto[2] + '/beneficios/'
-    + this.product.folleto[2]
-    this.pdfSrc = this.data2.folleto[0];
+    this.pdfSrc = this.producto.folletos[0];
+    
   }
 
 }

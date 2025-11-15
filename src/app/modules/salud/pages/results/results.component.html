@@ -221,19 +221,20 @@
       </app-form-queplan>
       </jw-modal> -->
 </section>
-<!--       <div class="card flex justify-content-center">
+      <div class="card flex justify-content-center">
    <p-button (click)="showDialog()" icon="pi pi-external-link" label="Show"></p-button>
-   <p-dialog header="Header" [(visible)]="visible" [style]="{ width: '50vw' }">
+   <!-- <p-dialog header="Header" [(visible)]="visible" [style]="{ width: '50vw' }">
        <div class="flex py-2 justify-content-center">
          <body class="theme" >
            <app-form-quote></app-form-quote>
        
            
            <p-dropdown appendTo="body" [options]="cities" [(ngModel)]="selectedCity" placeholder="Select a City" optionLabel="name"></p-dropdown>
-       </div>
-   </p-dialog>
+        </body>
+         </div>
+   </p-dialog> -->
    </div>
-   -->
+  
 <ng-container *ngIf='compareProdList().length >= 1 show' >
    <div id="mybutton" >
       <button class="feedback" mat-raised-button color="primary"
@@ -262,11 +263,25 @@
 <p-dialog [(visible)]="visible" id="form" styleClass="disable-scroll" [responsive]="true">
    <div class="flex py-2 justify-content-center">
        <body class="ui-dialog-content ui-widget-content theme ">
-           <app-formulario></app-formulario>
+           <app-default></app-default>
        </body>
    </div>
 </p-dialog>
 
+<!-- Tu p-dialog -->
+<!-- <p-dialog 
+  [(visible)]="visible" 
+  id="details" 
+  styleClass="disable-scroll" 
+  [responsive]="true"
+  [modal]="true"
+  [closable]="true">
+  <div class="flex py-2 justify-content-center">
+    <body class="ui-dialog-content ui-widget-content theme">
+      <app-mas-detalles [producto]="productChosen"></app-mas-detalles>
+    </body>
+  </div>
+</p-dialog> -->
 
 <div class="product-detail" [class.active]="showProductDetail">
    {{ statusDetail}}
@@ -282,6 +297,7 @@
  
      </swiper-container>
    `,
+
          <h1>{{productChosen.empresa}}</h1>
     <button (click)="updateProduct()">editar</button>
     <button (click)="deleteProduct()">eliminar</button>

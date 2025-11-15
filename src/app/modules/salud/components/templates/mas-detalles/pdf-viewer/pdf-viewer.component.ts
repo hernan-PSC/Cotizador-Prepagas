@@ -3,7 +3,7 @@ import {MatDialogModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angula
 // import {DialogData} from '../../home/home-products/home-products.component';
 import {DialogData1} from './../../../../components/molecules/product-land/product-land.component';
 import {DialogData2} from './../../../../components/molecules/product-card/product-card.component';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
+// import { c } from 'ng2-pdf-viewer';
 // import {DialogData2} from './../../../../components/molecules/result/result.component';
 
 
@@ -12,13 +12,13 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 @Component({
     selector: 'app-pdf-viewer',
     template: `
-  <pdf-viewer [src]= "pdfSrc"
+  <!-- <pdf-viewer [src]= "pdfSrc"
   [render-text]="true"
   [original-size]="false"
   style="width: 100%; height: 100%"
-  ></pdf-viewer>
+  ></pdf-viewer> -->
   `,
-    imports: [PdfViewerModule]
+    // imports: [PdfViewerModule]
 })
 export class PdfViewerComponent implements OnInit {
   public pdfSrc : string;

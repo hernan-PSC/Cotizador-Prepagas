@@ -1,13 +1,12 @@
-import { Component, Inject, OnInit, VERSION } from '@angular/core';
+import { Component, Inject, Input, OnInit, VERSION } from '@angular/core';
 import {MatDialogModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 // import {DialogData2} from './../../../molecules/product-card/product-card.component';
-import {DialogData1} from './../../../molecules/product-land/product-land.component';
-import {DialogData2} from './../../../molecules/product-card/product-card.component';
-import { SortPipe } from '../../../../../../../pipes/sort.pipe';
+// import { SortPipe } from '../../../../../../../pipes/sort.pipe';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { NgFor } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
+import { Planes } from "../../../../../../data/interfaces/planes";
 
 
 
@@ -19,9 +18,13 @@ import { MatTabsModule } from '@angular/material/tabs';
     selector: 'app-clinicas-list-group',
     templateUrl: './clinicas-list-group.component.html',
     styleUrls: ['./clinicas-list-group.component.css'],
-    imports: [MatTabsModule, NgFor, FormsModule, InputTextModule, SortPipe]
+    imports: [MatTabsModule, NgFor, FormsModule, InputTextModule
+      // SortPipe
+    ]
 })
 export class ClinicasListGroupComponent implements OnInit {
+  @Input() product: any;
+  
   selectedClinicas: any;
   matTabLabels: string[] = [];
    SortbyParam = '';
@@ -31,25 +34,24 @@ export class ClinicasListGroupComponent implements OnInit {
   filteredProducts: any[] = [];
  
   constructor(
-    public dialogRef: MatDialogRef<ClinicasListGroupComponent>,@Inject(MAT_DIALOG_DATA) 
-    public data1: DialogData1,@Inject(MAT_DIALOG_DATA) 
-    public data2: DialogData2,
+    
   
   ) {  
 
 }
-
+ showDiv1 = false;
+showDiv2 = true;
 
   ngOnInit() {
-    if(this.data1){
-    this.selectedClinicas = this.data1.clinicas;
+   
+    console.log('this.product :');
+
+    console.log(this.product);
+
+    if(this.product){
+    this.selectedClinicas = this.product.clinicas;
     this.filterProducts();
-    console.log(this.data1.clinicas)
-  this.populateMatTabLabels();
-    }else if(this.data2){
-      this.selectedClinicas = this.data2.clinicas;
-    this.filterProducts();
-    console.log(this.data2.clinicas)
+    console.log(this.product.clinicas)
   this.populateMatTabLabels();
     }
   }
@@ -59,32 +61,21 @@ export class ClinicasListGroupComponent implements OnInit {
     console.log(event);
     if (event.index != 0) {
       const filterText = event.tab.textLabel;
-      if(this.data1){
-      this.selectedClinicas = this.data1.clinicas.filter((clinicas: any) => {
-        return clinicas.ubicacion.region === filterText;
+      if(this.product){
+      this.selectedClinicas = this.product.clinicas.filter((clinicas: any) => {
+        return clinicas.region === filterText;
       });
       console.log(this.selectedClinicas);
-    } if(this.data2){
-      this.selectedClinicas = this.data2.clinicas.filter((clinicas: any) => {
-        return clinicas.ubicacion.region === filterText;
-      });
-      console.log(this.selectedClinicas);
-    } else if (this.data1){
-      this.selectedClinicas = this.data2.clinicas;
-    }else {
-      this.selectedClinicas = this.data2.clinicas;
-
     }}
   }
 
   populateMatTabLabels(): void {
 
     let clinicas: any[];
-    if (this.data1){
-      clinicas = this.data1.clinicas.map((clinica: any) => clinica.ubicacion.region)
-    } else if (this.data2){
-      clinicas =  this.data2.clinicas.map((clinica: any) => clinica.ubicacion.region)
-    }
+    if (this.product){
+      console.log("linea 68",this.product )
+      clinicas = this.product.clinicas.map((clinica: any) => clinica.region)
+    } 
     const regions: string[] = clinicas;
     const uniqueRegions: string[] = Array.from(new Set(regions));
     this.matTabLabels = ['TODAS', ...uniqueRegions];

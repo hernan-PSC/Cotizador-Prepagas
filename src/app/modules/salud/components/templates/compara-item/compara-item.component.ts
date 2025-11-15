@@ -4,17 +4,22 @@ import { ComparaClinicasComponent } from './compara-clinicas/compara-clinicas/co
 import { NgIf } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import {MatIconModule,MatIconRegistry} from '@angular/material/icon';
+import {MatTabsModule} from '@angular/material/tabs';
+import { DomSanitizer } from "@angular/platform-browser";
+const logoURL = "assets/images/iconos/ubicacione.svg";
 @Component({
     selector: 'app-compara-item',
     templateUrl: './compara-item.component.html',
     styleUrls: ['./compara-item.component.css'],
     standalone: true,
     imports: [
-      NgIf,
       ComparaClinicasComponent,
       ComparaAttributesComponent,
-      MatDialogModule]
+     MatDialogModule,
+      MatTabsModule,
+      MatIconModule
+    ]
 })
 export class ComparaItemComponent implements OnInit {
   @Input() compareList: any;
@@ -22,29 +27,28 @@ export class ComparaItemComponent implements OnInit {
   @Input() productos: any;
   @Input() items: any;
  
-  constructor() { }
-  showDiv1 = false;
-  showDiv2 = true;
-  
-  filter(value: string) {
-    if (value === 'attributes') {
-      this.showDiv1 = true;
-      this.showDiv2 = false;
-    } else if (value === 'clinicas') {
-      this.showDiv1 = false;
-      this.showDiv2 = true;
-    } else {
-      this.showDiv1 = false;
-      this.showDiv2 = false;
-    }
-  }
-  
-    onPrint() {
-      window.print();  
-      
-      
-    }
-  ngOnInit(): void {
+  constructor(
+    private matIconRegistry1: MatIconRegistry,
+     private matIconRegistry2: MatIconRegistry,
+    private domSanitizer1: DomSanitizer,
+    
+    private domSanitizer2: DomSanitizer
+  ) { 
+          this.matIconRegistry1.addSvgIcon(
+      "ubicaciones",
+      this.domSanitizer1.bypassSecurityTrustResourceUrl('assets/images/iconos/ubicaciones.svg'));
+                this.matIconRegistry2.addSvgIcon(
+      "corazon_tilde",
+      this.domSanitizer2.bypassSecurityTrustResourceUrl('assets/images/iconos/corazon_tilde.svg'));
   }
 
+ 
+
+    onPrint() {
+      window.print();  
+    }
+  ngOnInit(): void {
+   
+  }
+ 
 }

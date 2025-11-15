@@ -1017,8 +1017,12 @@ isLinear = false;
    
    // Manejadores de eventos para mouseup/touchend
 
-   @HostListener('mouseup', ['$event'])
-   @HostListener('touchend', ['$event'])
+   @HostListener('mouseup', [
+    // '$event'
+  ])
+   @HostListener('touchend', [
+    // '$event'
+  ])
    onMouseUpOrTouchEnd() {
      // Limpiar el intervalo cuando se suelta el botón del mouse o cuando el toque termina
      this.clearIntervals();

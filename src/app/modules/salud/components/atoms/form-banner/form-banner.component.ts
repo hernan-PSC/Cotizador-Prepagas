@@ -36,7 +36,7 @@ export class FormBannerComponent implements OnInit{
 
 
   showFormDialog() {
-    // this.visible = true;
+    this.visible = true;
 
     this.dialogService.toggleVisibility('results');
   }

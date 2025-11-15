@@ -14,6 +14,7 @@ export interface Planes {
     folletos?:string[];
     beneficios?:string[];
     clinicas?:string[];
+    compare?: boolean;
     _id?: string;
     item_id?:string;
     description:string;
