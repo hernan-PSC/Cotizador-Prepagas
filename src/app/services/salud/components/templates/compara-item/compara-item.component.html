@@ -1,0 +1,35 @@
+
+<mat-tab-group animationDuration="100ms" id="mat-tab-group">
+  
+  <mat-tab >
+        <ng-template mat-tab-label>
+         <mat-icon style="margin-right:5px" svgIcon="ubicaciones"></mat-icon>
+          
+      Clinicas
+    </ng-template>
+    <div class="overflow-x-auto w-full" style="overflow-y: visible; height: 100%">
+     <app-compara-clinicas  [productos]="productos" [clinicasVal]='clinicasVal' [items]='items'></app-compara-clinicas>
+
+    </div>
+  </mat-tab>
+  
+  <mat-tab >
+        <ng-template mat-tab-label>
+      <mat-icon style="margin-right:5px"   svgIcon="corazon_tilde"></mat-icon>
+
+      Beneficios
+    </ng-template>
+    <div class="overflow-x-auto w-full" style="overflow-y: visible; height: 100%">
+      <app-compara-attributes [productos]="productos"></app-compara-attributes>
+
+    </div>
+</mat-tab>
+
+</mat-tab-group>
+
+      <!-- <img src="../../../assets/images/iconos/ubicaciones.webp">
+
+  
+      <img src="../../../assets/images/iconos/corazon_tilde.webp">
+
+ -->

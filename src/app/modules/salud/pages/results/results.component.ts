@@ -20,7 +20,7 @@ import {
   CUSTOM_ELEMENTS_SCHEMA,
   NO_ERRORS_SCHEMA
 } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 import { map, pairwise, filter, throttleTime } from "rxjs/operators";
 import { CdkVirtualScrollViewport } from "@angular/cdk/scrolling";
 import * as planes from "../../../../../../public/products.json";
@@ -52,6 +52,8 @@ import rfdc from "rfdc";
 import { Credit } from "./../../../../data/interfaces";
 import { CREDIT_DATA_ITEMS } from "./../../../../data/constants/mock";
 import { Planes } from "./../../../../data/interfaces/planes";
+import { Clinicas } from "./../../../../data/interfaces/clinicas";
+
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
 import { SortPipe } from "../../../../../pipes/sort.pipe";
 import { FilterPipe } from "../../../../../pipes/filter.pipe";
@@ -154,7 +156,6 @@ export class ResultsComponent implements OnInit, OnChanges, OnDestroy  {
   view: string = "list";
  
 
-
   receiveMessage($event: string) {
     this.view = $event;
   }
@@ -234,6 +235,7 @@ export class ResultsComponent implements OnInit, OnChanges, OnDestroy  {
   cadena: any
   selectedItems: any[] | undefined;
   visible = false;
+  detailsVisible = false;
   productChosen: any;
   showProductDetail = false;
 
@@ -241,7 +243,15 @@ export class ResultsComponent implements OnInit, OnChanges, OnDestroy  {
  
 previousSelectedItems: any[] = [];
 
-  
+  // Propriedades para armazenar as suscripciones
+  private responsiveSubscription!: Subscription;
+  private dialogSubscription!: Subscription;
+  private formularioSubscription!: Subscription;
+  private sortbySubscription!: Subscription;
+  private empresaSubscription!: Subscription;
+  private filteredProductsSubscription!: Subscription;
+  private filterClinicasSubscription!: Subscription;
+  private productosFiltradosSubscription!: Subscription;  
 
 
 
@@ -257,7 +267,7 @@ return this.cadena
   trackByCredits = (_: number, item: Credit): number => item.id;
 
   constructor(
-    private modalService: ModalService,
+ private modalService: ModalService,
     private dataFormularios: ServcioRetornoPrecioService,
     private deselctComparar: ServcioRetornoPrecioService,
     private servicioComparar: ServicioDeCompararService,
@@ -273,6 +283,7 @@ return this.cadena
     private breakpointObserver: BreakpointObserver,
     private responsiveService: ResponsiveService,
     private dialogService: DialogService,
+    private dialogService2: DialogService,
     
   ) 
   {
@@ -328,7 +339,7 @@ if (producto) {
         console.log('Producto no encontrado');
       }
       console.log(" producto  :", producto)
-    this.visible = true; // Mostramos el diálogo
+    this.detailsVisible = true; // Mostramos el diálogo
   }
 // Función que actualiza isSmallScreen según el estado de la pantalla
 componentSelectorMode(breakpoints: { [key: string]: boolean }) {
@@ -373,7 +384,7 @@ componentSelectorMode(breakpoints: { [key: string]: boolean }) {
       empresa_prepaga: 0,
       edad_1: 19,
       edad_2: 0,
-      numkids: 0,
+      numkids: 2,
       tipo: "P",
       agree: true,
       aporteOS: "",
@@ -428,7 +439,7 @@ actualizarLista() {
 
     if (this.products.resultado) {
       this.products = this.products.resultado;
-      // console.log("results 369  this.products.resultado:", this.products);
+      console.log("results 369  this.products.resultado:", this.products);
     }
 
     // console.log("results 372 this.servicioComparar.compareList");
@@ -508,7 +519,7 @@ actualizarLista() {
         // console.log(products[i].name)
       }
       obj["nombre"] = clinicas[x].entity;
-      obj["barrio"] = clinicas[x].barrio;
+      obj["barrio"] = clinicas[x].ubicacion[0].barrio;
       for (let i = 0; i < products.length; i++) {
         let id = products[i].item_id;
         if (clinicas[x].cartillas.includes(id) == true) {
@@ -534,33 +545,55 @@ actualizarLista() {
       clinicas[n].planesSeleccionados.unshift("Nombre de Entidad");
       planesElegidos = clinicas[n].planesSeleccionados;
     }
-    const clCaba = clinicas.filter(function (clinica) {
-      return clinica.region === "CABA";
+    // SOLUCIÓN CORRECTA: Usando .some()
+const clCaba = clinicas.filter((clinica) => {
+  // Verifica si AL MENOS UNA ubicación dentro del arreglo 'ubicacion'
+  // tiene la propiedad 'region' igual a "CABA"
+  return clinica.ubicacion?.some((ubicacionItem: { region: string; }) => ubicacionItem.region === "CABA");
+});
+
+    const clNorte = clinicas.filter((clinica) => {
+      // Verifica si AL MENOS UNA ubicación dentro del arreglo 'ubicacion'
+      // tiene la propiedad 'region' igual a "CABA"
+      return clinica.ubicacion?.some((ubicacionItem: { region: string; }) => ubicacionItem.region === "GBA-Norte");
     });
-    const clNorte = clinicas.filter(function (clinica) {
-      return clinica.region === "GBA-Norte";
+    const clOeste = clinicas.filter((clinica) => {
+      // Verifica si AL MENOS UNA ubicación dentro del arreglo 'ubicacion'
+      // tiene la propiedad 'region' igual a "CABA"
+      return clinica.ubicacion?.some((ubicacionItem: { region: string; }) => ubicacionItem.region === "GBA-Oeste");
     });
-    const clOeste = clinicas.filter(function (clinica) {
-      return clinica.region === "GBA-Oeste";
+    const clSur = clinicas.filter((clinica) => {
+      // Verifica si AL MENOS UNA ubicación dentro del arreglo 'ubicacion'
+      // tiene la propiedad 'region' igual a "CABA"
+      return clinica.ubicacion?.some((ubicacionItem: { region: string; }) => ubicacionItem.region === "GBA-Sur");
     });
-    const clSur = clinicas.filter(function (clinica) {
-      return clinica.region === "GBA-Sur";
-    });
-    const clLaPlata = clinicas.filter(function (clinica) {
-      return clinica.region === "La Plata";
+    const clLaPlata = clinicas.filter((clinica) => {
+      // Verifica si AL MENOS UNA ubicación dentro del arreglo 'ubicacion'
+      // tiene la propiedad 'region' igual a "CABA"
+      return clinica.ubicacion?.some((ubicacionItem: { region: string; }) => ubicacionItem.region === "La Plata");
     });
     // let clinicasHeader = clinicas[0]['planesSeleccionados'];
     let clinicasCaba = clCaba.map((planes) => planes.valida);
-    let clinicasMorte = clNorte.map((planes) => planes.valida);
+      console.log(clinicasCaba);
+    let clinicasNorte = clNorte.map((planes) => planes.valida);
+      console.log(clinicasNorte); 
     let clinicasOeste = clOeste.map((planes) => planes.valida);
+      console.log(clinicasOeste);
     let clinicasSur = clSur.map((planes) => planes.valida);
+      console.log(clinicasSur);
     let clinicasLaPlata = clLaPlata.map((planes) => planes.valida);
+      console.log(clinicasLaPlata);
 
     let clinicasCabaPased = clCaba.map((planes) => planes.cliPased);
+       console.log(clinicasCabaPased);
     let clinicasNortePased = clNorte.map((planes) => planes.cliPased);
+        console.log(clinicasNortePased);
     let clinicasOestePased = clOeste.map((planes) => planes.cliPased);
+      console.log(clinicasOestePased);
     let clinicasSurPased = clSur.map((planes) => planes.cliPased);
+    console.log(clinicasSurPased);
     let clinicasLaPlataPased = clLaPlata.map((planes) => planes.cliPased);
+    console.log(clinicasLaPlataPased);
 
     // console.log(clinicasCabaPased);
     // console.log(clinicasNortePased);
@@ -577,7 +610,7 @@ actualizarLista() {
       clinicasLaPlataPased,
       planesElegidos,
       clinicasCaba,
-      clinicasMorte,
+      clinicasNorte,
       clinicasOeste,
       clinicasSur,
       clinicasLaPlata,
@@ -632,10 +665,12 @@ actualizarLista() {
 
   let newArray = [];
   
+console.log("this.productosFiltrados 642",this.productosFiltrados );
 
   this.productosFiltrados = this.products;
 
-console.log(this.products)
+console.log("this.products 645",this.products );
+this.products 
   var seleccion = selectedClinica
   console.log(" 582 this.selectedClinica :",selectedClinica)
   console.log(" 583 seleccion :",seleccion)
@@ -870,7 +905,7 @@ if(this.previousSelectedItems.length > this.selectedItems.length){
     }
   }
   async ngOnInit(): Promise<void> {
-    this.isLoaded = false;
+     this.isLoaded = false;
     this.showComparionSidebar()
 
         // Al iniciar el componente, verificamos el estado actual de la pantalla
@@ -888,8 +923,15 @@ if(this.previousSelectedItems.length > this.selectedItems.length){
         });
     
  
+    this.dialogService.detailsVisible$.subscribe((value) => {
+                console.log("Valor actual de detailsVisible$: ", value);
 
-
+      this.detailsVisible = value;
+      // IMPORTANTE: Cuando se oculta el diálogo, se resetea el producto elegido
+      if (!value) {
+          this.productChosen = null; 
+      }
+    });
 
 
 
@@ -906,18 +948,20 @@ if(this.previousSelectedItems.length > this.selectedItems.length){
         }
       });
     });
-    let formData = this.dataFormularios.getFormularioData();
-    // console.log(" 854 formData :", formData);
+    let formData = this.dataFormularios.getFormularioDataValue();
+    // console.log(" 854 formData :", fozzzrmData);
     // Lógica para usar datos iniciales o cacheados
     if (!formData && !cachedProducts) {
       this.dataFormularios.setFormularioData(this.formDataInicial.value);
-      formData = this.dataFormularios.getFormularioData();
+      formData = this.dataFormularios.getFormularioDataValue();
       // console.log(" 859  Usando datos iniciales del formulario : ", formData);
     } else if (!formData && cachedProducts) {
       // console.log("results 861 this.productosFiltrados = cachedProducts;");
+     this.productoService.setProductosFiltrados(cachedProducts);
 
-      this.productosFiltrados = cachedProducts;
+      // this.productosFiltrados = cachedProducts;
     }
+this.formularioSubscription = this.dataFormularios.formularioData$.subscribe(formData => {
 
     // Si hay datos del formulario, realiza la solicitud de precios
     if (formData) {
@@ -926,15 +970,15 @@ if(this.previousSelectedItems.length > this.selectedItems.length){
         (response: Planes) => {
           const tipo: string = formData.tipo;
           this.products = response;
-          // console.log('this.products 873  :')
-          // console.log(this.products)
+          console.log('this.products 873  :')
+          console.log(this.products)
 
           setTimeout(() => {
-            // console.log('this.products.resultado 877:')
-            // console.log(this.products )
+            console.log('this.products.resultado 877:')
+            console.log(this.products )
 
-            // console.log('this.products.resultado  880:' )
-            // console.log(this.products.resultado )
+            console.log('this.products.resultado  880:' )
+            console.log(this.products.resultado )
 
             // la propiedad tipo no esta no es una propiedad de los planes , no se porque quice filtrar, es un dato del formulario 
             // this.productosFiltrados = this.products.resultado.filter(
@@ -943,7 +987,7 @@ if(this.previousSelectedItems.length > this.selectedItems.length){
 
             // Guardar productos filtrados en caché
             caches.open("products").then((cache) => {
-              // console.log("results 890 JSON.stringify(this.productosFiltrados)")
+              console.log("results 890 JSON.stringify(this.productosFiltrados)")
 
               const productosResponse = new Response(
                 JSON.stringify(this.productosFiltrados)
@@ -951,24 +995,24 @@ if(this.previousSelectedItems.length > this.selectedItems.length){
               cache
                 .put("productos", productosResponse)
                 .then(() => {
-                  // console.log(" 898 Productos almacenados en caché:", productosResponse);
+                  console.log(" 898 Productos almacenados en caché:", productosResponse);
                 })
                 .catch((cacheError) => {
-                  // console.error("901 Error al almacenar en caché:", cacheError);
+                  console.error("901 Error al almacenar en caché:", cacheError);
                 });
             });
-// console.log(' 904   this.products.resultado 785',this.products.resultado)
+console.log(' 904   this.products.resultado 785',this.products.resultado)
             // Actualizar la vista con los productos
             this.compareProdList();
             this.onItemSelect(this.selectedClinica);
           }, 0);
         },
         (error: any) => {
-          // console.error("Error en la solicitud de precios:", error);
+          console.error("Error en la solicitud de precios:", error);
         }
       );
     }
-
+ });
     // Observadores y configuraciones adicionales
     this.SortbyParamControl.valueChanges.subscribe((selectedValue: string) => {
       // console.log(" 918 Nuevo valor seleccionado:", selectedValue);
@@ -1080,12 +1124,18 @@ if(this.previousSelectedItems.length > this.selectedItems.length){
       });
     }
   }
-
   ngOnDestroy(): void {
-    // Nos desuscribimos para evitar fugas de memoria
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    console.log('Componente Resultados destruído. Limpando suscripciones.');
+    
+    // Chamada .unsubscribe() em todas as suscripciones
+    this.responsiveSubscription?.unsubscribe();
+    this.dialogSubscription?.unsubscribe();
+    this.formularioSubscription?.unsubscribe();
+    this.sortbySubscription?.unsubscribe();
+    this.empresaSubscription?.unsubscribe();
+    this.filteredProductsSubscription?.unsubscribe();
+    this.filterClinicasSubscription?.unsubscribe();
+    this.productosFiltradosSubscription?.unsubscribe();
   }
 
   onClinicaFilter() {

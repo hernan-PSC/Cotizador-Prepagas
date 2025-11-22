@@ -56,10 +56,10 @@ propKey: string = '';
     console.log('this.clinicasVal :');
 
     console.log(this.clinicasVal);
-    console.log('this.productos :');
+    console.log('59 this.productos :');
 
     console.log(this.productos);
-    console.log('this.items :');
+    console.log('62 this.items :');
 
     console.log(this.items);
   }

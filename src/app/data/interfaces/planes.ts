@@ -1,56 +1,48 @@
-import { Imagen as MiImagen } from './interfaces';
+import { Imagen, Attribute } from './interfaces';
+import { Clinicas } from './clinicas'; // Importamos la interfaz Clinicas completa
 
 export interface Planes {
-    type: any;
-    price?: number;
-    precio?: number;
-    rating?: '1' | '2' | '3'| '4' | '5';
-    copagos?: string;
+    _id?: string;
+    item_id?: string;
+    empresa?: string;
+    sigla?: string; 
+
+    // Datos principales
+    price: number; 
+    precio: number;
+    rating: number; 
     category?: 'inferior' | 'intermedio' | 'superior';
     tags?: string[];
-    hijosSolos?: string;
     name?: string;
-    images?:MiImagen[];
-    folletos?:string[];
-    beneficios?:string[];
-    clinicas?:string[];
-    compare?: boolean;
-    _id?: string;
-    item_id?:string;
-    description:string;
-    caracteristicas:string[];
-    servicios:string[]
-    valueSlide3?: number;
-    valueSlide4?: number;
-    PMO_Solo_por_Aportes?: boolean;
-    Cirugia_Estetica?:boolean;
-    Ortodoncia_Adultos?:boolean;
-    Habitacion_Individual?:boolean;
-    Cobertura_Nacional?:boolean;
-    Sin_Copagos?:boolean;
+
+    // Atributos binarios (Booleanos)
+    Cirugia_Estetica: boolean;
+    Cobertura_Nacional: boolean;
+    Habitacion_Individual: boolean;
+    Ortodoncia_Adultos: boolean;
+    PMO_Solo_por_Aportes: boolean;
+    Sin_Copagos: boolean;
+    copagos: boolean;
+    hijosSolos: boolean;
+
+    // Campos numéricos adicionales
+    raiting: number; 
+    valueSlide3: number;
+    valueSlide4: number;
+    aporteOS: number;
     
-  }
-  
-  export class filterObject {
-    discountRates!: number[];
-    maxVal!: number;
-    minVal!: number;
-  }
+    // Anidación de Sub-documentos (deben ser arrays si el Schema los trata como [Schema])
+    // images en el Schema es un array de ImageSchema
+    images: Imagen[];
+    
+    // attributes en el Schema es un array de Mixed (pero si usas Attribute, es mejor tiparlo)
+    attributes: Attribute[]; 
 
-  export const planesList: Planes[] = [
+    // clinicas en el Schema es un array de ClinicaSchema
+    clinicas: Clinicas[];
 
-    { type:"",
-    item_id: "",
-        images: [{id:"",descripcion:"logo",empresa:"SanCor Salud",url:"assets/images/images/card-header/sancorsalud.png"},
-                 {id:"",descripcion:"credencial",empresa:"SanCor Salud",url:"assets/images/images/card-header/sancorsalud.png"},
-                 {id:"",descripcion:"flyer",empresa:"SanCor Salud",url:"assets/images/planes_sancor/Feed4000-sm(680x664).jpg"},],
-        name: 'Full Sleeve Sweatshirt for Men (Pink)',
-        category: 'inferior',
-        rating: '4',
-        price: 120,
-        description: '',
-        caracteristicas: ['Full Sleeve', 'Full Sleeve', 'All Sizes available', '4 Different Color'],
-        servicios: ['10 Days Replacement', 'Cash on Delivery available'],
-    }
-  ];
-
+    // Otros arrays de strings
+    folletos?: string[];
+    beneficios?: string[];
+    cartillas?: string[]; // Si el plan tuviera cartillas directamente (lo agrego por si acaso)
+}

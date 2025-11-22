@@ -1,18 +1,26 @@
-import { Ubicacion as MiUbicacion, Imagen as MiImagen } from './interfaces';
+import { Ubicacion, Imagen, CoberturaInterface } from './interfaces';
+
+// ----------------------------------------------------
+// Interfaz Principal: Clinicas
+// ----------------------------------------------------
 
 
 export interface Clinicas {
-  _id?: string;
-  item_id?: string;
-  nombre?: string; // Asegúrate de que la propiedad "nombre" esté definida sin el signo de interrogación (?)
-  entity?: string;
-  ubicacion?: MiUbicacion;
-  url?: string;
-  imagen?: MiImagen[];
-  tipo?: string;
-  especialidades?: string[];
-  cartillas?: string[];
-  coberturas?: string[];
+    _id?: string;
+    nombre: string;
+    entity: string;
+    cartillas: string[];
+    coberturas: CoberturaInterface[]; 
+    item_id: string;
+    
+    // *** CORRECCIÓN CLAVE ***
+    // Ahora 'ubicacion' es un ARRAY de objetos Ubicacion
+    ubicacion: Ubicacion[]; 
+    
+    url: string;
+    imagen: Imagen; // Objeto anidado
+    tipo: string;
+    especialidades: string[];
+    rating: number;
+    select: boolean;
 }
-
-  

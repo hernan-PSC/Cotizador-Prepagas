@@ -75,7 +75,9 @@ export class ProductLandComponent implements OnInit{
 
 
   onShowDetail() {
-    this.showProduct.emit(this.product.item_id)
+    console.log("product-card this.product.item_id: ",this.product.item_id)
+    this.showProduct.emit(this.product.item_id);
+    console.log('this.product  insurer',this.product)
   }   
   // @ViewChild("compararButon") compararButon: ElementRef;
    //https://bit.ly/Replacement_ElementRef
@@ -107,7 +109,7 @@ agregarcomparar(){
     });
   console.log(this.product)
   this.setPopoverTrigger();
-  }
+  };
 
   openDialog(
     // enterAnimationDuration: string, exitAnimationDuration: string,

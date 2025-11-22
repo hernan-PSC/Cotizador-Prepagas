@@ -48,6 +48,9 @@ console.log('api_url   :',api_url)
       })
     );
     // Retorna el Observable para permitir la suscripción del componente o servicio.
+    console.log('tgis.precios en el servidor de angiula');
+    console.log(this.precios)
+
     return this.precios;
   }
   

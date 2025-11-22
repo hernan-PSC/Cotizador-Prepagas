@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl: "https://backend.avalianonline.com.ar"
-    // apiUrl: "http://localhost:5200"
+  // apiUrl: "https://backend.avalianonline.com.ar"
+    apiUrl: "http://localhost:5200"
+    // apiUrl: "https://servidorplus.avalianonline.com.ar"
 
 };
 

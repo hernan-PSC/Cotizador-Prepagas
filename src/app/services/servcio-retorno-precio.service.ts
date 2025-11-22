@@ -1,31 +1,32 @@
-import {  EventEmitter, Injectable,Output} from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServcioRetornoPrecioService {
-  @Output() disparadorDePrecio: EventEmitter <any> = new EventEmitter;
-  public formularioData: any;
-  
+  @Output() disparadorDePrecio: EventEmitter<any> = new EventEmitter;
+
+  // 1. BehaviorSubject para almacenar y emitir los datos del formulario
+  private _formularioData = new BehaviorSubject<any>(null);
+
+  // 2. Observable público para que los componentes se suscriban (es una convención)
+  public formularioData$: Observable<any> = this._formularioData.asObservable();
+
   constructor() { }
 
   emitirDatos(data: any) {
-    // Agrega un registro de consola aquí
-    // console.log('Enviando datos desde el servicio:', data);
-
     this.disparadorDePrecio.emit(data);
   }
+
   setFormularioData(data: any) {
-    // Guarda los datos del formulario en la propiedad formularioData
-    this.formularioData = data;
-    // console.log('setFormularioData desde el servicio:', data);
-
+    // 3. Cuando los datos cambian, se emiten al BehaviorSubject
+    this._formularioData.next(data);
+    console.log('setFormularioData desde el servicio (BehaviorSubject):', data);
   }
 
-  getFormularioData() {
-    // Devuelve los datos del formulario almacenados en la propiedad formularioData
-    // console.log('getFormularioData desde el servicio:',this.formularioData);
-    return this.formularioData;
+  // 4. Método para obtener el valor actual de manera síncrona (si es necesario)
+  getFormularioDataValue() {
+    return this._formularioData.getValue();
   }
-
 }

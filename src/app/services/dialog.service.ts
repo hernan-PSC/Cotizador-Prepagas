@@ -8,6 +8,8 @@ import { BehaviorSubject } from 'rxjs';
 export class DialogService {
   private _visible = new BehaviorSubject<boolean>(false);
   visible$ = this._visible.asObservable();
+    private _detailsVisible = new BehaviorSubject<boolean>(false);
+  detailsVisible$ = this._detailsVisible.asObservable();
   private _page = new BehaviorSubject<string>('');
   page$ = this._page.asObservable();
 
